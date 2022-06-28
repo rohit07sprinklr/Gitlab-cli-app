@@ -1,0 +1,73 @@
+{
+  "name": "gitlab-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "rm -rf build && node build.js",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "build": {
+    "extraResources": [
+      {
+        "from": "./build/extraResources/",
+        "to": "build/extraResources",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "esbuild": "^0.12.21",
+    "express": "^4.17.1",
+    "p-queue": "^7.2.0",
+    "simple-git": "^3.7.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "hbs": "^4.2.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
+    "electron": "^19.0.4"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "./gitlab-cli.icns"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "gitlabcli_app"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}

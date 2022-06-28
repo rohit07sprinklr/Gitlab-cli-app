@@ -1,0 +1,6 @@
+build/
+node_modules/
+.idea
+Icon?
+.DS_Store
+out/
